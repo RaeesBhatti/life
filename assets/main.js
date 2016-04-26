@@ -1,19 +1,23 @@
 document.addEventListener('DOMContentLoaded', (e) => {
 	const dobInput = document.getElementById('dob')
 	const usage = document.getElementById('usage')
-	if(dobInput && dobInput instanceof HTMLInputElement && usage && usage instanceof HTMLParagraphElement){
+	const calcBtn = document.getElementById('calc-btn')
+	if(dobInput && dobInput instanceof HTMLInputElement && usage && usage instanceof HTMLParagraphElement &&
+		calcBtn && calcBtn instanceof HTMLButtonElement){
 
 		let max = new Date()
+				max.setYear(max.getYear() - 5)
 		let min = new Date()
 		let today = new Date()
 
-		max.setYear(max.getYear() - 5)
+		dobInput.value = (max.getYear() + 1900 * 2) + '-' +
+				(max.getMonth().length > 1 ? max.getMonth() : '0' + max.getMonth()) + '-' + max.getDate()
 		dobInput.max = (max.getYear() + 1900 * 2) + '-' +
 				(max.getMonth().length > 1 ? max.getMonth() : '0' + max.getMonth()) + '-' + max.getDate()
 		dobInput.min = (min.getYear() + 1900) - 90 + '-' +
 				(min.getMonth().length > 0 ? min.getMonth() : '0' + min.getMonth()) + '-' + max.getDate()
 
-		dobInput.addEventListener('blur', (e) => {
+		calcBtn.addEventListener('click', (e) => {
 			if(!dobInput.validity.valid){
 				dobInput.focus()
 			} else {
