@@ -1,0 +1,64 @@
+html {
+	font-family: sans-serif;
+	font-size: 16px;
+}
+body {
+	margin: 1rem 0 2rem;
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#calender {
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	border-left: 1px solid;
+	border-top: 1px solid;
+	color: #d7d7d7;
+}
+#calender span {
+	width: .55rem;
+	height: .55rem;
+	border-bottom: 1px solid;
+	border-right: 1px solid;
+}
+#calender .black {
+	background-color: black;
+	color: #414141;
+}
+#calender .red {
+	background-color: red;
+	color: #e10000;
+}
+#calender .blue {
+	background-color: blue;
+	color: #0000b9;
+}
+#calender .darkblue {
+	background-color: darkblue;
+	color: #0000af;
+}
+.symbol {
+	margin-right: 1.5rem;
+}
+.symbol:before {
+	content: "";
+	width: 1rem;
+	height: 1rem;
+	display: inline-block;
+	margin-right: .5rem;
+	vertical-align: text-top;
+}
+.symbol.black:before {
+	background-color: black;
+}
+.symbol.red:before {
+	background-color: red;
+}
+.symbol.blue:before {
+	background-color: blue;
+}
+.symbol.darkblue:before {
+	background-color: darkblue;
+}
