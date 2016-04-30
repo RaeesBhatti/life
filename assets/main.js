@@ -3,13 +3,14 @@ document.addEventListener('DOMContentLoaded', (e) => {
 	const dobInput = document.getElementById('dob')
 	const usage = document.getElementById('usage')
 	const inputs = document.getElementById('inputs')
+	const today = new Date()
+	const maxWeeks = 4693
 
 	if(inputs instanceof HTMLFormElement && dobInput instanceof HTMLInputElement && usage instanceof HTMLParagraphElement){
 
 		let max = new Date()
 				max.setFullYear(max.getFullYear() - 5)
 		let min = new Date()
-		let today = new Date()
 
 		dobInput.value = (max.getFullYear()) + '-' +
 				(max.getMonth().length > 1 ? max.getMonth() : '0' + max.getMonth()) + '-' + max.getDate()
@@ -29,7 +30,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 			while(calender.firstChild){
 				calender.removeChild(calender.firstChild)
 			}
-			for(i = 0; i <= 4693; ++i) {
+			for(i = 0; i <= maxWeeks; ++i) {
 				let span = document.createElement('span')
 
 				switch (true) {
@@ -59,13 +60,13 @@ document.addEventListener('DOMContentLoaded', (e) => {
 			}
 
 			usage.innerHTML = '<p>You have used <strong>' +
-					(((today.getFullYear() - dob.getFullYear()) / 90) * 100).toFixed(3) + '%</strong> of your life</p>'
+					((weeks / maxWeeks) * 100).toFixed(3) + '%</strong> of your life</p>'
 		})
 	}
 
 	const calender = document.getElementById('calender')
 	if(calender && calender instanceof HTMLDivElement){
-		for(i = 0; i <= 4693; ++i){
+		for(i = 0; i <= maxWeeks; ++i){
 			let span = document.createElement('span')
 
 			switch (true){
