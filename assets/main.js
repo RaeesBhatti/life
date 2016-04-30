@@ -19,6 +19,15 @@ document.addEventListener('DOMContentLoaded', (e) => {
 		dobInput.min = (min.getFullYear()) - 90 + '-' +
 				(min.getMonth().length > 0 ? min.getMonth() : '0' + min.getMonth()) + '-' + max.getDate()
 
+		dobInput.addEventListener('change', (e) => {
+			let dob = new Date(Date.parse(dobInput.value))
+			if(isNaN(dob.getDate())){
+				dobInput.setCustomValidity('Please input the date of birth in YYYY-MM-DD format')
+			} else {
+				dobInput.setCustomValidity('')
+			}
+		})
+
 		inputs.addEventListener('submit', (e) => {
 			e.preventDefault()
 
