@@ -7,23 +7,23 @@ document.addEventListener('DOMContentLoaded', (e) => {
 	if(inputs instanceof HTMLFormElement && dobInput instanceof HTMLInputElement && usage instanceof HTMLParagraphElement){
 
 		let max = new Date()
-				max.setYear(max.getYear() - 5)
+				max.setFullYear(max.getFullYear() - 5)
 		let min = new Date()
 		let today = new Date()
 
-		dobInput.value = (max.getYear() + 1900 * 2) + '-' +
+		dobInput.value = (max.getFullYear()) + '-' +
 				(max.getMonth().length > 1 ? max.getMonth() : '0' + max.getMonth()) + '-' + max.getDate()
-		dobInput.max = (max.getYear() + 1900 * 2) + '-' +
+		dobInput.max = (max.getFullYear() * 2) + '-' +
 				(max.getMonth().length > 1 ? max.getMonth() : '0' + max.getMonth()) + '-' + max.getDate()
-		dobInput.min = (min.getYear() + 1900) - 90 + '-' +
+		dobInput.min = (min.getFullYear()) - 90 + '-' +
 				(min.getMonth().length > 0 ? min.getMonth() : '0' + min.getMonth()) + '-' + max.getDate()
 
 		inputs.addEventListener('submit', (e) => {
 			e.preventDefault()
 
-			let dob = new Date(dobInput.valueAsDate)
-			let maxLife = new Date(dobInput.valueAsDate)
-			maxLife.setYear(maxLife.getYear() + 90 + 1900)
+			let dob = new Date(Date.parse(dobInput.value))
+			let maxLife = new Date(Date.parse(dobInput.value))
+			maxLife.setFullYear(maxLife.getFullYear() + 90)
 			let weeks = Math.round(Math.round((today - dob) / 8.64e7) / 7);
 
 			while(calender.firstChild){
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 			}
 
 			usage.innerHTML = '<p>You have used <strong>' +
-					((((today.getYear() + 1900) - (dob.getYear() + 1900)) / 90) * 100).toFixed(3) + '%</strong> of your life</p>'
+					(((today.getFullYear() - dob.getFullYear()) / 90) * 100).toFixed(3) + '%</strong> of your life</p>'
 		})
 	}
 
