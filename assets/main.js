@@ -13,9 +13,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
 		let min = new Date()
 
 		dobInput.value = (max.getFullYear()) + '-' +
-				(max.getMonth().length > 1 ? max.getMonth() : '0' + max.getMonth()) + '-' + max.getDate()
+				(max.getMonth().length > 1 ? max.getMonth() : '0' + max.getMonth()) + '-' +
+				(max.getDate().length > 1 ? max.getMonth() : '0' + max.getMonth())
 		dobInput.max = (max.getFullYear()) + '-' +
-				(max.getMonth().length > 1 ? max.getMonth() : '0' + max.getMonth()) + '-' + max.getDate()
+				(max.getMonth().length > 1 ? max.getMonth() : '0' + max.getMonth()) + '-' +
+				(max.getDate().length > 1 ? max.getMonth() : '0' + max.getMonth())
 		dobInput.min = (min.getFullYear()) - 90 + '-' +
 				(min.getMonth().length > 0 ? min.getMonth() : '0' + min.getMonth()) + '-' + max.getDate()
 
