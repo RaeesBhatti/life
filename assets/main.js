@@ -36,8 +36,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
 			e.preventDefault()
 
 			let dob = new Date(Date.parse(dobInput.value))
-			let maxLife = new Date(Date.parse(dobInput.value))
-			maxLife.setFullYear(maxLife.getFullYear() + 90)
 			let weeks = Math.round(Math.round((today - dob) / 8.64e7) / 7);
 
 			while(calender.firstChild){
