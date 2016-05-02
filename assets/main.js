@@ -8,18 +8,20 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
 	if(inputs instanceof HTMLFormElement && dobInput instanceof HTMLInputElement && usage instanceof HTMLParagraphElement){
 
-		let max = new Date()
+		var max = new Date()
 				max.setFullYear(max.getFullYear() - 5)
-		let min = new Date()
+		var min = new Date()
+				min.setFullYear(min.getFullYear() - 90)
 
 		dobInput.value = (max.getFullYear()) + '-' +
 				(max.getMonth().length > 1 ? max.getMonth() : '0' + max.getMonth()) + '-' +
 				(max.getDate().length > 1 ? max.getMonth() : '0' + max.getMonth())
 		dobInput.max = (max.getFullYear()) + '-' +
 				(max.getMonth().length > 1 ? max.getMonth() : '0' + max.getMonth()) + '-' +
-				(max.getDate().length > 1 ? max.getMonth() : '0' + max.getMonth())
-		dobInput.min = (min.getFullYear()) - 90 + '-' +
-				(min.getMonth().length > 0 ? min.getMonth() : '0' + min.getMonth()) + '-' + max.getDate()
+				(max.getDate().length > 1 ? max.getDate() : '0' + max.getDate())
+		dobInput.min = (min.getFullYear()) + '-' +
+				(min.getMonth().length > 0 ? min.getMonth() : '0' + min.getMonth()) + '-' +
+				(min.getDate().length > 1 ? min.getDate() : '0' + min.getDate())
 
 		dobInput.addEventListener('change', (e) => {
 			let dob = new Date(Date.parse(dobInput.value))
