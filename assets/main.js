@@ -27,6 +27,16 @@ document.addEventListener('DOMContentLoaded', (e) => {
 			let dob = new Date(Date.parse(dobInput.value))
 			if(isNaN(dob.getDate())){
 				dobInput.setCustomValidity('Please input the date of birth in YYYY-MM-DD format')
+			} else if(dob > max) {
+				dobInput.setCustomValidity('Date of birth should be less than ' +
+						(max.getFullYear()) + '-' + (max.getMonth().length > 1 ? max.getMonth() : '0' + max.getMonth()) + '-' +
+						(max.getDate().length > 1 ? max.getDate() : '0' + max.getDate())
+				)
+			} else if(dob < min){
+				dobInput.setCustomValidity('Date of birth should be greater than ' +
+						(min.getFullYear()) + '-' + (min.getMonth().length > 0 ? min.getMonth() : '0' + min.getMonth()) + '-' +
+						(min.getDate().length > 1 ? min.getDate() : '0' + min.getDate())
+				)
 			} else {
 				dobInput.setCustomValidity('')
 			}
