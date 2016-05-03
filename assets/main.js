@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
 		dobInput.value = (max.getFullYear()) + '-' +
 				(max.getMonth().length > 1 ? max.getMonth() : '0' + max.getMonth()) + '-' +
-				(max.getDate().length > 1 ? max.getMonth() : '0' + max.getMonth())
+				(max.getDate().length > 1 ? max.getDate() : '0' + max.getDate())
 		dobInput.max = (max.getFullYear()) + '-' +
 				(max.getMonth().length > 1 ? max.getMonth() : '0' + max.getMonth()) + '-' +
 				(max.getDate().length > 1 ? max.getDate() : '0' + max.getDate())
