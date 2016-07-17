@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 	const dobInput = document.getElementById('dob')
 	const usage = document.getElementById('usage')
 	const inputs = document.getElementById('inputs')
+	const calender = document.getElementById('calender')
 	const today = new Date()
 	const maxWeeks = 4693
 
@@ -49,65 +50,45 @@ document.addEventListener('DOMContentLoaded', (e) => {
 			while(calender.firstChild){
 				calender.removeChild(calender.firstChild)
 			}
-			for(i = 0; i <= maxWeeks; ++i) {
-				let span = document.createElement('span')
-
-				switch (true) {
-						// already spent weeks
-					case weeks > i:
-						span.classList.add('black')
-						break
-
-						// first 7 years
-					case i < 365:
-						span.classList.add('black')
-						break
-
-						// 12 years
-					case i < 626:
-						span.classList.add('blue')
-						break
-
-						// more than 85 years
-					case i > 4432 :
-						span.classList.add('red')
-						break
-
-					default:
-				}
-				calender.appendChild(span)
-			}
-
+			setupCalender(calender, weeks, maxWeeks)
 			usage.innerHTML = '<p>You have used <strong>' +
 					((weeks / maxWeeks) * 100).toFixed(3) + '%</strong> of your life</p>'
 		})
 	}
 
-	const calender = document.getElementById('calender')
 	if(calender && calender instanceof HTMLDivElement){
-		for(i = 0; i <= maxWeeks; ++i){
-			let span = document.createElement('span')
-
-			switch (true){
-				// first 0-7 years
-				case i < 365:
-					span.classList.add('darkblue')
-					break
-
-				// 7-12 years
-				case i < 626:
-					span.classList.add('blue')
-					break
-
-				// more than 85 years
-				case i > 4432:
-					span.classList.add('red')
-					break
-
-				default:
-
-			}
-			calender.appendChild(span)
-		}
+		setupCalender(calender, 0, maxWeeks)
 	}
 })
+
+function setupCalender(calender, weeks = 0, maxWeeks){
+	for(i = 0; i <= maxWeeks; ++i){
+		let span = document.createElement('span')
+
+		switch (true){
+			// already spent weeks
+			case weeks > i:
+				span.classList.add('black')
+				break
+
+			// first 0-7 years
+			case i < 365:
+				span.classList.add('darkblue')
+				break
+
+			// 7-12 years
+			case i < 626:
+				span.classList.add('blue')
+				break
+
+			// more than 85 years
+			case i > 4432:
+				span.classList.add('red')
+				break
+
+			default:
+
+		}
+		calender.appendChild(span)
+	}
+}
