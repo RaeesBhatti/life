@@ -26,18 +26,22 @@ body {
 #calender .black {
 	background-color: black;
 	color: #414141;
+	border-color: transparent;
 }
 #calender .red {
 	background-color: red;
 	color: #e10000;
+	border-color: transparent;
 }
 #calender .blue {
 	background-color: blue;
 	color: #0000b9;
+	border-color: transparent;
 }
 #calender .darkblue {
 	background-color: darkblue;
 	color: #0000af;
+	border-color: transparent;
 }
 .symbol {
 	margin-right: 1.5rem;
@@ -61,4 +65,7 @@ body {
 }
 .symbol.darkblue:before {
 	background-color: darkblue;
+}
+.hidden {
+	display: none;
 }
