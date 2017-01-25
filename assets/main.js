@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 			} else {
 				dobInput.setCustomValidity('')
 			}
+			localStorage.setItem('dob', dobInput.value)
 		})
 
 		inputs.addEventListener('submit', (e) => {
@@ -59,6 +60,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 	if(calender && calender instanceof HTMLDivElement){
 		setupCalender(calender, 0, maxWeeks)
 	}
+	dobInput.value = localStorage.getItem('dob')
 })
 
 function setupCalender(calender, weeks = 0, maxWeeks){
