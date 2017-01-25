@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
 	if(inputs instanceof HTMLFormElement && dobInput instanceof HTMLInputElement && usage instanceof HTMLParagraphElement){
 
-		var max = new Date()
+		let max = new Date()
 				max.setFullYear(max.getFullYear() - 5)
-		var min = new Date()
+		let min = new Date()
 				min.setFullYear(min.getFullYear() - 90)
 
 		dobInput.value = (max.getFullYear()) + '-' +
