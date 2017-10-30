@@ -58,7 +58,10 @@ document.addEventListener('DOMContentLoaded', (e) => {
 	}
 
 	if(calender && calender instanceof HTMLDivElement){
-		setupCalender(calender, 0, maxWeeks)
+		const weeks = Math.round(Math.round((today - (new Date(Date.parse(localStorage.getItem('dob'))))) / 8.64e7) / 7)
+		setupCalender(calender, weeks, maxWeeks)
+		usage.innerHTML = '<p>You have used <strong>' +
+			((weeks / maxWeeks) * 100).toFixed(3) + '%</strong> of your life</p>'
 	}
 	dobInput.value = localStorage.getItem('dob')
 })
