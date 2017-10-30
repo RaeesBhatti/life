@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 			e.preventDefault()
 
 			let dob = new Date(Date.parse(dobInput.value))
-			let weeks = Math.round(Math.round((today - dob) / 8.64e7) / 7);
+			let weeks = Math.round(Math.round((today - dob) / 8.64e7) / 7)
 
 			while(calender.firstChild){
 				calender.removeChild(calender.firstChild)
