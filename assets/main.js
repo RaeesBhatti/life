@@ -1,18 +1,20 @@
+'use strict';
 document.addEventListener('DOMContentLoaded', (e) => {
 
-	const dobInput = document.getElementById('dob')
-	const usage = document.getElementById('usage')
-	const inputs = document.getElementById('inputs')
-	const calender = document.getElementById('calender')
-	const today = new Date()
-	const maxWeeks = 4693
+	const dobInput = document.getElementById('dob'),
+				usage = document.getElementById('usage'),
+				inputs = document.getElementById('inputs'),
+				calender = document.getElementById('calender'),
+				today = new Date(),
+				maxWeeks = 4693
 
 	if(inputs instanceof HTMLFormElement && dobInput instanceof HTMLInputElement && usage instanceof HTMLParagraphElement){
 
-		let max = new Date()
-				max.setFullYear(max.getFullYear() - 5)
-		let min = new Date()
-				min.setFullYear(min.getFullYear() - 90)
+		const max = new Date(),
+					min = new Date()
+
+		max.setFullYear(max.getFullYear() - 5)
+		min.setFullYear(min.getFullYear() - 90)
 
 		dobInput.value = (max.getFullYear()) + '-' +
 				(max.getMonth().toString().length > 1 ? max.getMonth() : '0' + max.getMonth()) + '-' +
@@ -23,7 +25,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 				(min.getDate().toString().length > 1 ? min.getDate() : '0' + min.getDate())
 
 		dobInput.addEventListener('change', (e) => {
-			let dob = new Date(Date.parse(dobInput.value))
+			const dob = new Date(Date.parse(dobInput.value))
 			if(isNaN(dob.getDate())){
 				dobInput.setCustomValidity('Please input the date of birth in YYYY-MM-DD format')
 			} else if(dob > max) {
@@ -45,8 +47,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
 		inputs.addEventListener('submit', (e) => {
 			e.preventDefault()
 
-			let dob = new Date(Date.parse(dobInput.value))
-			let weeks = Math.round(Math.round((today - dob) / 8.64e7) / 7)
+			const dob = new Date(Date.parse(dobInput.value)),
+						weeks = Math.round(Math.round((today - dob) / 8.64e7) / 7)
 
 			while(calender.firstChild){
 				calender.removeChild(calender.firstChild)
@@ -67,8 +69,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
 })
 
 function setupCalender(calender, weeks = 0, maxWeeks){
-	for(i = 0; i <= maxWeeks; ++i){
-		let span = document.createElement('span')
+	for(let i = 0; i <= maxWeeks; ++i){
+		const span = document.createElement('span')
 
 		switch (true){
 			// already spent weeks
