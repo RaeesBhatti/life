@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
 				inputs = document.getElementById('inputs'),
 				calender = document.getElementById('calender'),
 				today = new Date(),
-				maxWeeks = 4693
+				maxWeeks = 4693,
+				savedDob = JSON.parse(self.localStorage.getItem('dob'))
 
 	if(inputs instanceof HTMLFormElement && dobInput instanceof HTMLInputElement && usage instanceof HTMLParagraphElement){
 
@@ -41,7 +42,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 			} else {
 				dobInput.setCustomValidity('')
 			}
-			localStorage.setItem('dob', dobInput.value)
+			self.localStorage.setItem('dob', JSON.stringify(dobInput.value))
 		})
 
 		inputs.addEventListener('submit', (e) => {
@@ -59,13 +60,16 @@ document.addEventListener('DOMContentLoaded', (e) => {
 		})
 	}
 
-	if(calender && calender instanceof HTMLDivElement){
-		const weeks = Math.round(Math.round((today - (new Date(Date.parse(localStorage.getItem('dob'))))) / 8.64e7) / 7)
+	dobInput.value = savedDob
+	if(calender instanceof HTMLDivElement){
+		let weeks = 0
+		if (savedDob) {
+			weeks =  Math.round(Math.round((today - (new Date(Date.parse(savedDob)))) / 8.64e7) / 7)
+			usage.innerHTML = '<p>You have used <strong>' +
+				((weeks / maxWeeks) * 100).toFixed(3) + '%</strong> of your life</p>'
+		}
 		setupCalender(calender, weeks, maxWeeks)
-		usage.innerHTML = '<p>You have used <strong>' +
-			((weeks / maxWeeks) * 100).toFixed(3) + '%</strong> of your life</p>'
 	}
-	dobInput.value = localStorage.getItem('dob')
 })
 
 function setupCalender(calender, weeks = 0, maxWeeks){
