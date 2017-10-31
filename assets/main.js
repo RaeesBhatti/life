@@ -103,3 +103,12 @@ function setupCalender(calender, weeks = 0, maxWeeks){
 		calender.appendChild(span)
 	}
 }
+
+(self => {
+	if ('serviceWorker' in navigator) {
+		navigator.serviceWorker.register('./sw.js', {scope: './', credentials: 'include'}).catch(err => {
+			console.log('Service Worker Failed to Register', err)
+		})
+	}
+
+})(self)
