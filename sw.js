@@ -2,7 +2,8 @@
 	'use strict'
 
 	const siteHost = self.location.host,
-				siteRoot = self.location.pathname.split('/').slice(0, -1).join('/')
+				siteRoot = self.location.pathname.split('/').slice(0, -1).join('/'),
+				siteProtocol = self.location.protocol
 
 	// Set a name for the current cache
 	const cacheName = 'v1'
