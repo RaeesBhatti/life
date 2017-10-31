@@ -44,7 +44,7 @@
 
 		if ((url.protocol !== 'http:' && url.protocol !== 'https:') ||
 			(url.host === host && url.pathname.startsWith('/api/'))) {
-			return fetch(e.request)
+			return e.respondWith(fetch(e.request))
 		}
 
 		e.respondWith(
