@@ -8,9 +8,9 @@ document.addEventListener('DOMContentLoaded', (e) => {
 				today = new Date(),
 				maxWeeks = 4693
 
-	let savedDob = null
+	let savedDOB = null
 	try {
-		savedDob = JSON.parse(self.localStorage.getItem('dob'))
+		savedDOB = JSON.parse(self.localStorage.getItem('dob'))
 	} catch (_) {}
 
 	if(inputs instanceof HTMLFormElement && dobInput instanceof HTMLInputElement && usage instanceof HTMLParagraphElement){
@@ -64,11 +64,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
 		})
 	}
 
-	dobInput.value = savedDob
+	dobInput.value = savedDOB
 	if(calender instanceof HTMLDivElement){
 		let weeks = 0
-		if (savedDob) {
-			weeks =  Math.round(Math.round((today - (new Date(Date.parse(savedDob)))) / 8.64e7) / 7)
+		if (savedDOB) {
+			weeks =  Math.round(Math.round((today - (new Date(Date.parse(savedDOB)))) / 8.64e7) / 7)
 			usage.innerHTML = '<p>You have used <strong>' +
 				((weeks / maxWeeks) * 100).toFixed(3) + '%</strong> of your life</p>'
 		}
