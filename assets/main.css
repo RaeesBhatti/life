@@ -19,9 +19,7 @@ body {
 }
 #calender span {
 	width: .55rem;
-	width: 1.25vw;
 	height: .55rem;
-	height: 1.25vw;
 	border-bottom: 1px solid;
 	border-right: 1px solid;
 }
