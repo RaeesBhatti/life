@@ -1,8 +1,8 @@
 (self => {
 	'use strict'
 
-	const host = self.location.host,
-				pathname = self.location.pathname.split('/').slice(0, -1).join('/')
+	const siteHost = self.location.host,
+				siteRoot = self.location.pathname.split('/').slice(0, -1).join('/')
 
 	// Set a name for the current cache
 	const cacheName = 'v1'
@@ -43,7 +43,7 @@
 		let url = new URL(e.request.url)
 
 		if ((url.protocol !== 'http:' && url.protocol !== 'https:') ||
-				(url.host === host && url.pathname.startsWith('/api/')) ||
+				(url.host === siteHost && url.pathname.startsWith('/api/')) ||
 				url.pathname.startsWith('/cdn-cgi/')
 		) {
 			return e.respondWith(fetch(e.request))
