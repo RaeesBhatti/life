@@ -44,7 +44,7 @@
 		let url = new URL(e.request.url)
 
 		if ((url.protocol !== 'http:' && url.protocol !== 'https:') ||
-				(url.host === siteHost && url.pathname.startsWith('/api/')) ||
+				(url.host === siteHost && url.pathname.startsWith(siteRoot + '/api/')) ||
 				url.pathname.startsWith('/cdn-cgi/')
 		) {
 			return e.respondWith(fetch(e.request))
