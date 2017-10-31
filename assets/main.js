@@ -6,8 +6,12 @@ document.addEventListener('DOMContentLoaded', (e) => {
 				inputs = document.getElementById('inputs'),
 				calender = document.getElementById('calender'),
 				today = new Date(),
-				maxWeeks = 4693,
-				savedDob = JSON.parse(self.localStorage.getItem('dob'))
+				maxWeeks = 4693
+
+	let savedDob = null
+	try {
+		savedDob = JSON.parse(self.localStorage.getItem('dob'))
+	} catch (_) {}
 
 	if(inputs instanceof HTMLFormElement && dobInput instanceof HTMLInputElement && usage instanceof HTMLParagraphElement){
 
