@@ -19,7 +19,9 @@ body {
 }
 #calender span {
 	width: .55rem;
+	width: 1.25vw;
 	height: .55rem;
+	height: 1.25vw;
 	border-bottom: 1px solid;
 	border-right: 1px solid;
 }
@@ -68,4 +70,26 @@ body {
 }
 .hidden {
 	display: none;
+}
+
+@media screen and (max-width: 425px) {
+	#calender span {
+		width: .15rem;
+		width: 1.25vw;
+		height: .15rem;
+		height: 1.25vw;
+	}
+}
+@media screen and (max-width: 768px) {
+	.symbol {
+		display: block;
+	}
+}
+@media screen and (max-width: 1024px) {
+	#calender span {
+		width: .25rem;
+		width: 1vw;
+		height: .25rem;
+		height: 1vw;
+	}
 }
