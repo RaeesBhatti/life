@@ -26,19 +26,21 @@
 		)
 	})
 
-	self.addEventListener('activate', e => {
+	self.addEventListener('activate', e =>
 		e.waitUntil(
-			self.clients.claim().then(() => {
-				caches.keys().then(cacheNames => {
-					return Promise.all(cacheNames.map(thisCacheName => {
-						if (thisCacheName !== cacheName) {
-							return caches.delete(thisCacheName)
-						}
-					}))
-				})
-			})
+			self.clients.claim()
+				.then(() =>
+					caches.keys()
+						.then(cacheNames =>
+							Promise.all(
+								cacheNames.map(
+									thisCacheName => this.cacheName !== cacheName && caches.delete(thisCacheName)
+								)
+							)
+						)
+				)
 		)
-	})
+	)
 
 	self.addEventListener('fetch', e => {
 		let url = new URL(e.request.url)
