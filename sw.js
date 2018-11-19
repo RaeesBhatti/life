@@ -56,10 +56,7 @@
 			caches.match(e.request).then(cachedResponse => {
 				if (cachedResponse) {
 					const cachedResponseClone = cachedResponse.clone()
-					if (
-						(cachedResponseClone.headers.get('etag') && cachedResponseClone.headers.get('etag').length) ||
-						(cachedResponseClone.headers.get('last-modified') && cachedResponseClone.headers.get('last-modified').length)
-					) {
+					if (cachedResponseClone.headers.get('etag') || cachedResponseClone.headers.get('last-modified')) {
 						fetch(e.request.clone()).then(fetchResponse => {
 							if (
 								cachedResponseClone.headers.get('etag') !== fetchResponse.headers.get('etag') &&
