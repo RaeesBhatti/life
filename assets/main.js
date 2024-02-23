@@ -77,6 +77,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
 })
 
 function setupCalender(calender, weeks = 0, maxWeeks){
+	const totalWeeksIn90Years = 90 * 52;
+	const remainingWeeksAt70 = totalWeeksIn90Years - (70 * 52)
 	for(let i = 0; i <= maxWeeks; ++i){
 		const span = document.createElement('span')
 
@@ -87,18 +89,21 @@ function setupCalender(calender, weeks = 0, maxWeeks){
 				break
 
 			// first 0-7 years
-			case i < 365:
+			case i < (7 * 52):
 				span.classList.add('darkblue')
 				break
 
 			// 7-12 years
-			case i < 626:
+			case i < (12 * 52):
 				span.classList.add('blue')
 				break
 
-			// more than 85 years
-			case i > 4432:
+			// more than 70 years
+			case i > (70 * 52):
 				span.classList.add('red')
+				// Fade-in the color, starting with 0% opacity at 70 years and ending with 100% at 90 years
+				const remainingWeeksBetween70And90 = totalWeeksIn90Years - i;
+				span.style.backgroundColor = 'rgba(255, 0, 0, ' + (1 - (remainingWeeksBetween70And90 / remainingWeeksAt70)) + ')'
 				break
 
 			default:
